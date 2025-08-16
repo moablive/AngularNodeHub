@@ -1,0 +1,44 @@
+<div class="my-4">
+  <h3 class="mb-4">{{ isEditMode ? 'Editar Usuário' : 'Adicionar Novo Usuário' }}</h3>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    
+    <div class="mb-3">
+      <label for="email" class="form-label"><fa-icon icon="envelope"></fa-icon> Email</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="email" 
+        formControlName="email"
+        placeholder="nome@exemplo.com"
+        [class.is-invalid]="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+      >
+      </div>
+    
+    <div class="mb-3">
+      <label for="senha" class="form-label"><fa-icon icon="lock"></fa-icon> Senha</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="senha" 
+        formControlName="senha"
+        [class.is-invalid]="userForm.get('senha')?.invalid && userForm.get('senha')?.touched"
+      >
+      <div *ngIf="isEditMode" class="form-text">
+        Deixe em branco para manter a senha atual.
+      </div>
+      <div *ngIf="userForm.get('senha')?.invalid && userForm.get('senha')?.touched" class="invalid-feedback">
+        <div *ngIf="userForm.get('senha')?.errors?.['required']">Senha é obrigatória.</div>
+        <div *ngIf="userForm.get('senha')?.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</div>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid || isLoading">
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      {{ isEditMode ? 'Atualizar' : 'Salvar' }}
+    </button>
+  </form>
+</div>

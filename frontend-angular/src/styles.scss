@@ -1,0 +1,30 @@
+/* src/styles.scss */
+
+// Garante que a base do seu site (html e body) ocupe 100% da altura da tela.
+html, body {
+  height: 100%;
+}
+
+// Transforma o body em um container flexível.
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+// Diz para o componente raiz do Angular (onde vivem o navbar, o conteúdo e o footer)
+// para também ser um container flexível e ocupar 100% da altura.
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+// todo o espaço vazio disponível, empurrando o footer para baixo.
+main {
+  flex: 1 0 auto;
+}
+
+// Garante que o footer não encolha.
+app-footer {
+  flex-shrink: 0;
+}

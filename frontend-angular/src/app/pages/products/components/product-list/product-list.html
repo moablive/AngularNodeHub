@@ -1,0 +1,150 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Lista de Produtos</h4>
+    </div>
+    <div class="card-body">
+
+        <div *ngIf="isLoading" class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Carregando...</span>
+            </div>
+            <p class="mt-2">Buscando produtos...</p>
+        </div>
+
+        <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="!isLoading && !errorMessage" class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <fa-icon [icon]="['fas', 'id-card']" class="me-2"></fa-icon>ID
+                        </th>
+                        <th scope="col">
+                            Imagem
+                        </th>
+                        <th scope="col">
+                            <fa-icon [icon]="['fas', 'box-open']" class="me-2"></fa-icon>Nome
+                        </th>
+                        <th scope="col">
+                            <fa-icon [icon]="['fas', 'brazilian-real-sign']" class="me-2"></fa-icon>Preço
+                        </th>
+                        <th scope="col" class="text-end">
+                            <fa-icon [icon]="['fas', 'gears']" class="me-2"></fa-icon>Ações
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products" (click)="openDetailsModal(product)" style="cursor: pointer;">
+                        <th scope="row">{{ product.id }}</th>
+                        <td>
+                            <img [src]="product.img_base64" alt="{{ product.nome }}" width="50" height="50"
+                                class="img-thumbnail" *ngIf="product.img_base64">
+                            <span *ngIf="!product.img_base64" class="text-muted">Sem Imagem</span>
+                        </td>
+                        <td>{{ product.nome }}</td>
+                        <td>{{ product.preco | currency:'BRL' }}</td>
+                        <td class="text-end" (click)="$event.stopPropagation()">
+                            <button (click)="editProduct(product.id)" class="btn btn-outline-warning btn-sm me-2">
+                                <fa-icon [icon]="['fas', 'pencil']"></fa-icon>
+                                Editar
+                            </button>
+                            <button (click)="openDeleteModal(product)" class="btn btn-outline-danger btn-sm">
+                                <fa-icon [icon]="['fas', 'trash-can']"></fa-icon>
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="products.length === 0">
+                        <td colspan="5" class="text-center text-muted">
+                            Nenhum produto cadastrado.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" [class.show]="showConfirmationModal" [style.display]="showConfirmationModal ? 'block' : 'none'"
+    tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="deleteModalLabel">
+                    <fa-icon [icon]="['fas', 'triangle-exclamation']" class="text-warning me-2"></fa-icon>
+                    Confirmar Exclusão
+                </h5>
+                <button type="button" class="btn-close" (click)="cancelDelete()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja remover o produto <strong>{{productToDelete?.nome}}</strong>?</p>
+                <p class="text-muted small mt-2">Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelDelete()">
+                    <fa-icon [icon]="['fas', 'ban']" class="me-2"></fa-icon>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deleteConfirmed()">
+                    <fa-icon [icon]="['fas', 'trash-can']" class="me-2"></fa-icon>
+                    Confirmar Exclusão
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade" [class.show]="showConfirmationModal" *ngIf="showConfirmationModal"></div>
+
+<div class="modal fade" [class.show]="showDetailsModal" [style.display]="showDetailsModal ? 'block' : 'none'"
+    tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalhes do Produto</h5>
+                <button type="button" class="btn-close" (click)="closeDetailsModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="selectedProduct" class="row">
+                    <div class="col-md-5 text-center">
+                        <img [src]="selectedProduct.img_base64" *ngIf="selectedProduct.img_base64"
+                            [alt]="selectedProduct.nome" class="img-fluid rounded mb-3">
+                        <div *ngIf="!selectedProduct.img_base64"
+                            class="text-muted p-5 border rounded d-flex flex-column align-items-center justify-content-center">
+                            <fa-icon [icon]="['fas', 'image']" size="3x"></fa-icon>
+                            <p class="mt-2 mb-0">Sem imagem</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3>{{ selectedProduct.nome }}</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>ID do Produto:</strong>
+                                <span>#{{ selectedProduct.id }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Preço:</strong>
+                                <span class="badge bg-success fs-6">{{ selectedProduct.preco | currency:'BRL' }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Criado em:</strong>
+                                <span>{{ selectedProduct.criado_em | date:'dd/MM/yyyy HH:mm' }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Última Atualização:</strong>
+                                <span>{{ selectedProduct.atualizado_em | date:'dd/MM/yyyy HH:mm' }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeDetailsModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade" [class.show]="showDetailsModal" *ngIf="showDetailsModal"></div>

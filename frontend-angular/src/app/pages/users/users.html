@@ -1,0 +1,30 @@
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Gerenciamento de Usuários</h1>
+        <p class="fs-4 col-md-8 mx-auto">
+            Aqui você pode visualizar, adicionar, editar e remover usuários.
+        </p>
+    </div>
+</div>
+
+<div class="container my-4">
+    <div class="row g-2 justify-content-center">
+        <div class="col-auto">
+            <a routerLink="/users" routerLinkActive="active" class="btn btn-primary btn-lg">
+                <fa-icon icon="users" class="me-2"></fa-icon>
+                Listar Usuários
+            </a>
+        </div>
+
+        <div class="col-auto">
+            <a routerLink="/users/create" routerLinkActive="active" class="btn btn-success btn-lg">
+                <fa-icon icon="user-plus" class="me-2"></fa-icon>
+                Novo Usuário
+            </a>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <router-outlet></router-outlet>
+</div>

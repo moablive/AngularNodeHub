@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">AngularNodeHub</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active">Produtos</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active">Usuários</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ms-auto">
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <a class="btn btn-outline-light d-flex align-items-center" routerLink="/users/login">
+            <fa-icon icon="right-to-bracket" class="me-2"></fa-icon>
+            Login
+          </a>
+        </li>
+        
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <div class="d-flex align-items-center">
+            <span class="navbar-text me-3">
+              Olá, {{ userEmail }}
+            </span>
+            <button class="btn btn-outline-secondary d-flex align-items-center" (click)="logout()">
+              <fa-icon icon="right-from-bracket" class="me-2"></fa-icon>
+              Logout
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
