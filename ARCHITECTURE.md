@@ -1,5 +1,11 @@
 # Arquitetura do Projeto
 
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,ts,angular,mariadb,mysql" />
+  </a>
+</p>
+
 Este documento descreve a arquitetura do projeto, que é dividido em duas partes principais: um backend desenvolvido em Node.js com Express e um frontend desenvolvido em Angular.
 
 ## Visão Geral
@@ -11,7 +17,7 @@ O projeto segue uma arquitetura cliente-servidor:
 
 ---
 
-## Backend (Node.js/Express)
+## Backend (Node.js/Express) <img src="https://skillicons.dev/icons?i=nodejs,express,ts" height="25" alt="nodejs, express, typescript"/>
 
 O backend é construído com TypeScript e segue uma arquitetura em camadas para uma clara separação de responsabilidades.
 
@@ -29,9 +35,9 @@ O backend é construído com TypeScript e segue uma arquitetura em camadas para 
 
 ### Principais Dependências
 
--   **Express**: Framework web para Node.js.
--   **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
--   **MariaDB**: Driver para o banco de dados MariaDB/MySQL.
+-   **Express**: <img src="https://skillicons.dev/icons?i=express" height="20" alt="express"/> Framework web para Node.js.
+-   **TypeScript**: <img src="https://skillicons.dev/icons?i=ts" height="20" alt="typescript"/> Superset do JavaScript que adiciona tipagem estática.
+-   **MariaDB**: <img src="https://skillicons.dev/icons?i=mariadb" height="20" alt="mariadb"/> Driver para o banco de dados MariaDB/MySQL.
 -   **JSON Web Token (JWT)**: Para autenticação baseada em tokens.
 -   **Bcrypt.js**: Para hashing de senhas.
 -   **Multer**: Middleware para upload de arquivos.
@@ -39,7 +45,7 @@ O backend é construído com TypeScript e segue uma arquitetura em camadas para 
 
 ---
 
-## Frontend (Angular)
+## Frontend (Angular) <img src="https://skillicons.dev/icons?i=angular,ts" height="25" alt="angular, typescript"/>
 
 O frontend é uma SPA construída com Angular e TypeScript, seguindo as melhores práticas de organização de código em módulos.
 
@@ -61,96 +67,100 @@ O frontend é uma SPA construída com Angular e TypeScript, seguindo as melhores
 
 ### Principais Dependências
 
--   **Angular**: Framework para construção de SPAs.
--   **RxJS**: Biblioteca para programação reativa.
--   **Axios**: Cliente HTTP para fazer requisições à API do backend.
--   **Bootstrap**: Framework CSS para estilização.
--   **Font Awesome**: Biblioteca de ícones.
+-   **Angular**: <img src="https://skillicons.dev/icons?i=angular" height="20" alt="angular"/> Framework para construção de SPAs.
+-   **RxJS**: <img src="https://skillicons.dev/icons?i=rxjs" height="20" alt="rxjs"/> Biblioteca para programação reativa.
+-   **Axios**: <img src="https://skillicons.dev/icons?i=axios" height="20" alt="axios"/> Cliente HTTP para fazer requisições à API do backend.
+-   **Bootstrap**: <img src="https://skillicons.dev/icons?i=bootstrap" height="20" alt="bootstrap"/> Framework CSS para estilização.
+-   **Font Awesome**: <img src="https://skillicons.dev/icons?i=fontawesome" height="20" alt="fontawesome"/> Biblioteca de ícones.
 -   **ngx-mask**: Para aplicar máscaras em campos de formulário.
 
 ---
 
-## Comandos Úteis
+## Comandos Úteis <img src="https://skillicons.dev/icons?i=bash" height="25" alt="bash"/>
 
 ### Backend
 
 **Instalar dependências:**
 ```bash
 npm install
-```
+Executar em modo de desenvolvimento (com auto-reload):
 
-**Executar em modo de desenvolvimento (com auto-reload):**
-```bash
+Bash
+
 npm run dev
-```
+Compilar para produção:
 
-**Compilar para produção:**
-```bash
+Bash
+
 npm run build
-```
+Executar em modo de produção:
 
-**Executar em modo de produção:**
-```bash
+Bash
+
 npm start
-```
+Frontend (Angular)
+Instalar dependências:
 
-### Frontend (Angular)
+Bash
 
-**Instalar dependências:**
-```bash
 npm install
-```
+Executar em modo de desenvolvimento:
 
-**Executar em modo de desenvolvimento:**
-```bash
+Bash
+
 npm start
-```
 ou
-```bash
+
+Bash
+
 ng serve
-```
+Compilar para produção:
 
-**Compilar para produção:**
-```bash
+Bash
+
 npm run build
-```
 ou
-```bash
+
+Bash
+
 ng build
-```
+Gerar um novo componente:
 
-**Gerar um novo componente:**
-```bash
+Bash
+
 ng generate component nome-do-componente
-```
-*Abreviação:*
-```bash
+Abreviação:
+
+Bash
+
 ng g c nome-do-componente
-```
+Gerar um novo serviço:
 
-**Gerar um novo serviço:**
-```bash
+Bash
+
 ng generate service nome-do-servico
-```
-*Abreviação:*
-```bash
+Abreviação:
+
+Bash
+
 ng g s nome-do-servico
-```
+Gerar um novo módulo:
 
-**Gerar um novo módulo:**
-```bash
+Bash
+
 ng generate module nome-do-modulo
-```
-*Abreviação:*
-```bash
-ng g m nome-do-modulo
-```
+Abreviação:
 
-**Gerar um novo guarda de rota:**
-```bash
+Bash
+
+ng g m nome-do-modulo
+Gerar um novo guarda de rota:
+
+Bash
+
 ng generate guard nome-do-guarda
-```
-*Abreviação:*
-```bash
+Abreviação:
+
+Bash
+
 ng g g nome-do-guarda
-```
