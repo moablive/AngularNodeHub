@@ -18,7 +18,7 @@ A aplicação permite o gerenciamento completo de produtos e usuários, incluind
 
 ## ✨ Funcionalidades Principais
 
-### Frontend (Angular)
+### Frontend <img src="https://skillicons.dev/icons?i=angular" height="25" alt="angular"/>
 * 🔐 **Autênticação de Usuário**: Sistema completo com telas de Login e Registro.
 * 🛡️ **Rotas Protegidas**: Utilização de `AuthGuard` para proteger o acesso a áreas restritas.
 * 📦 **Gerenciamento de Produtos**:
@@ -33,7 +33,7 @@ A aplicação permite o gerenciamento completo de produtos e usuários, incluind
     * Exclusão com modal de confirmação.
 * 💅 **UI Moderna**: Interface limpa e responsiva construída com Bootstrap e ícones do Font Awesome.
 
-### Backend (Node.js / Express)
+### Backend (Node.js / Express) <img src="https://skillicons.dev/icons?i=nodejs,express,ts" height="25" alt="nodejs, express, typescript"/>
 * 🌐 **API RESTful**: Endpoints bem definidos para todas as operações de CRUD.
 * 🔑 **Autênticação com JWT**: Geração de token no login e verificação via middleware em rotas protegidas.
 * 🔒 **Segurança de Senhas**: Armazenamento seguro de senhas usando `bcryptjs` para hashing.
@@ -52,7 +52,7 @@ O projeto segue uma arquitetura cliente-servidor:
 
 ---
 
-### Backend (Node.js/Express) <img src="https://skillicons.dev/icons?i=nodejs,express,ts" height="25" alt="nodejs, express, typescript"/>
+### Backend <img src="https://skillicons.dev/icons?i=nodejs,express,ts" height="25" alt="nodejs, express, typescript"/>
 
 O backend é construído com TypeScript e segue uma arquitetura em camadas para uma clara separação de responsabilidades.
 
@@ -78,7 +78,7 @@ O backend é construído com TypeScript e segue uma arquitetura em camadas para 
 
 ---
 
-### Frontend (Angular) <img src="https://skillicons.dev/icons?i=angular,ts" height="25" alt="angular, typescript"/>
+### Frontend <img src="https://skillicons.dev/icons?i=angular,ts" height="25" alt="angular, typescript"/>
 
 O frontend é uma SPA construída com Angular e TypeScript, seguindo as melhores práticas de organização de código em módulos.
 
@@ -132,51 +132,50 @@ CREATE TABLE products (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-🚀 Como Executar o Projeto (Comandos Úteis)
-Backend
-Instalar dependências:
+````
 
-Bash
+## 🚀 Como Executar o Projeto
 
-npm install
-Executar em modo de desenvolvimento (com auto-reload):
+Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento localmente.
 
-Bash
+### 📦 Backend (Servidor)
 
-npm run dev
-Compilar para produção:
+1.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-Bash
+2.  **Execute em modo de desenvolvimento (com auto-reload):**
+    ```bash
+    npm run dev
+    ```
 
-npm run build
-Executar em modo de produção:
+3.  **Para gerar a build de produção:**
+    ```bash
+    npm run build
+    ```
 
-Bash
+4.  **Execute em modo de produção (após a build):**
+    ```bash
+    npm start
+    ```
 
-npm start
-Frontend (Angular)
-Instalar dependências:
+---
 
-Bash
+### ⚛️ Frontend (Cliente)
 
-npm install
-Executar em modo de desenvolvimento:
+1.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-Bash
+2.  **Execute em modo de desenvolvimento:**
+    ```bash
+    ng serve
+    ```
+    *Acesse `http://localhost:4200/` no seu navegador.*
 
-npm start
-ou
-
-Bash
-
-ng serve
-Compilar para produção:
-
-Bash
-
-npm run build
-ou
-
-Bash
-
-ng build
+3.  **Para gerar a build de produção:**
+    ```bash
+    ng build
+    ```
