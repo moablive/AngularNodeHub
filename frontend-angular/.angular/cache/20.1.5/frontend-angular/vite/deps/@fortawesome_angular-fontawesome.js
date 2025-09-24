@@ -1,7 +1,7 @@
 import {
   DomSanitizer
-} from "./chunk-CGSYF3BJ.js";
-import "./chunk-LVXSX67N.js";
+} from "./chunk-QGJLHYA4.js";
+import "./chunk-LJX2QZON.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,7 +28,7 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵsanitizeHtml
-} from "./chunk-7KWYALB7.js";
+} from "./chunk-W3FBTYKH.js";
 import {
   __spreadProps,
   __spreadValues
